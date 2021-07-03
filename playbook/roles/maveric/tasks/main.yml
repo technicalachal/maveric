@@ -1,0 +1,10 @@
+- name: install apache
+  yum: pkg=httpd state=latest
+- name: install jave
+  command: yum install java* -y
+- name: install tomcat
+  yum: pkg=tomcat state=latest
+- name: start tomcat service
+  action: service name=tomcat state=restarted
+- name: add phonebook warfile in tomcat
+  action: copy src=/home/ec2-user/phonebook.war dest=/var/lib/tomcat/webapps
